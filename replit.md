@@ -34,7 +34,7 @@ Astro-Guard is a NASA Space Apps Challenge research and anatomy visualization we
 - NASA HRP pages provide qualitative risk context, but the app has no connected astronaut telemetry dataset or sensor feed.
 - Synthetic demo readings are permitted by the user only when clearly labeled as simulation; never present them as NASA or live sensor data.
 - The optional manual check-in accepts raw user-entered measurements only. Keep entries in page memory; never transmit or persist them, and do not label them as NASA or sensor data.
-- Do not fabricate clinical thresholds, diagnoses, risk scores, or medical recommendations.
+- Do not invent clinical thresholds, diagnoses, risk scores, treatment advice, or emergency instructions. General prevention education is allowed only when source-cited and clearly not driven by entered values. Personalized assessment requires a mission-approved medical protocol.
 - The anatomy model is a third-party educational visual asset, not NASA data or a clinical tool.
 
 ## Product

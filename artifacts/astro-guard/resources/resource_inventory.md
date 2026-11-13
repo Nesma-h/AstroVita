@@ -13,6 +13,18 @@
 | Ongoing HRP research in space | [NASA Human Research Program](https://www.nasa.gov/hrp/ongoing-hrp-research/) | Linked from the official challenge Resources tab; informational research articles, not a challenge telemetry dataset. | Additional context only; no values are presented as live readings. |
 | Canadian Space Agency partner resources | [Radiation monitoring](https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp) and [space science experiments](https://www.asc-csa.gc.ca/eng/iss/science/why-do-we-conduct-science-experiments-in-space.asp) | Linked as partner resources by the official challenge page. | Read as contextual references, not as NASA datasets or a feed connected to Astro-Guard. |
 
+### NASA sources used for general guidance cards
+
+| NASA source | Source-supported context shown in the app | Boundary |
+| --- | --- | --- |
+| [Cardiovascular adaptations](https://www.nasa.gov/reference/risk-of-cardiovascular-adaptations/) | Regular exercise and healthy diets help crews maintain cardiovascular fitness. | The app does not personalize a diet or change a mission exercise plan. |
+| [Hypoxia](https://www.nasa.gov/reference/risk-of-hypoxia/) | NASA describes protocols addressing oxygen concentration and pressure. | A breathing-rate entry does not measure oxygen status; no oxygen threshold is inferred. |
+| [Inadequate sleep and irregular schedules](https://www.nasa.gov/reference/risk-from-inadequate-sleep-and-irregular-schedules/) | NASA describes light-dark cycle support and scheduled relaxation/self-care on the ISS. | The app does not adjust a crew member's sleep schedule or infer sleep quality. |
+| [Spaceflight-induced bone changes](https://www.nasa.gov/reference/risk-of-spaceflight-induced-bone-changes/) | Exercise is an essential component of preventing declines in bone tissue. | Logged exercise minutes do not measure bone density or change a mission prescription. |
+| [Altered immune system responses](https://www.nasa.gov/reference/risk-of-altered-immune-system-responses/) | NASA research monitors immune changes using biological samples such as blood, saliva, and urine. | The app cannot infer immune status from this check-in. |
+
+These cards are educational summaries and are visibly separate from demo or user-entered measurements. They are not individual medical advice, thresholds, diagnoses, or treatment instructions.
+
 ### Downloaded official files
 
 No challenge-specific measurement files were exposed in the page content reviewed. The official resources are web pages and research references; Astro-Guard does not claim they provide per-astronaut sensor readings. No original NASA dataset has been downloaded or altered.

@@ -33,13 +33,14 @@ No actual observations are available. Record counts, field names, data types, un
 
 ## Demonstration data policy
 
-At the user's direction, the interface may show **synthetic demo readings** to demonstrate interaction and animation. These are application-authored scenarios, visibly labeled **DEMO / SIMULATED** and never presented as NASA or astronaut sensor data. A scripted scenario state is not a medical risk classification; no invented clinical thresholds, diagnosis, treatment, or NASA recommendation is shown. Example activity/sleep values are demonstrations only. Immune and bone status must not be portrayed as inferred from a wearable sensor.
+At the user's direction, the interface may show **synthetic demo readings** to demonstrate interaction and animation. These are application-authored scenarios, visibly labeled **DEMO / SIMULATED** and never presented as NASA or astronaut sensor data. A scripted scenario state is not a medical risk classification. Source-cited educational prevention notes are kept separate from all readings and are not triggered by them. No invented clinical thresholds, diagnoses, treatments, or risk flags are shown. Example activity/sleep values are demonstrations only. Immune and bone status must not be portrayed as inferred from a wearable sensor.
 
-The dashboard also has an optional manual check-in for challenge-listed examples (heart rate, blood pressure, blood glucose, body temperature, sleep, mood) plus breathing and exercise. Values are labeled user-entered, remain in browser page memory only, and are not transmitted or saved. They are displayed as raw entries without automatically classifying them. A paired blood-pressure value is required only when either component is provided. No mission-specific clinical ranges or treatment instructions are currently available in the reviewed resources.
+The dashboard also has an optional manual check-in for challenge-listed examples (heart rate, blood pressure, blood glucose, body temperature, sleep, mood) plus breathing and exercise. Values are labeled user-entered, remain in browser page memory only, and are not transmitted or saved. They are displayed as raw entries without automatically classifying them. A paired blood-pressure value is required only when either component is provided. Selected-system panels now include general NASA-cited prevention or monitoring context; it is not personalized or calculated from the check-in. No mission-specific clinical ranges or treatment instructions are currently available in the reviewed challenge resources.
 
 ## Application use and limitations
 
 - The NASA pages support concise qualitative source notes and links; they do not supply a live feed or a challenge telemetry dataset.
+- Per-system guidance cards summarize broad NASA HRP prevention or monitoring context. They do not interpret readings, set thresholds, or replace crew procedures.
 - The 3D model is a separately sourced educational asset, not NASA science data or a clinical visualization.
 - Region markers are an interaction aid to relevant NASA context, not a claim of a proven one-to-one medical mapping.
 - No real-time sensor integration or clinical interpretation is implemented.

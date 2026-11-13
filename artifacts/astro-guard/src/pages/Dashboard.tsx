@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Activity, ArrowUpRight, BookOpen, Maximize2, Pause, Play, RotateCcw, X, ZoomIn, ZoomOut } from 'lucide-react';
 import { createAnatomyEngine, hasWebGL, type AnatomyEngine, type EngineStatus } from '@/components/anatomy/engine';
 import { HealthCheckInDrawer } from '@/components/HealthCheckInDrawer';
+import { HEALTH_GUIDANCE } from '@/data/healthGuidance';
 import {
   DEMO_DISCLAIMER, MODEL_CREDITS, NASA_INDEX, SCENARIOS, SCENARIO_ORDER, SYSTEMS, SYSTEM_ORDER,
   demoReadings, type Readings, type ScenarioId, type SystemId,
@@ -364,7 +365,14 @@ export default function Dashboard() {
                     </div>
                   );
                 })()}
-                <div className="block"><div className="kicker">What NASA says</div><p>{info.context}</p>
+                <div className="block" data-testid={`section-guidance-${info.id}`}>
+                  <div className="kicker">What NASA says</div>
+                  <p>{info.context}</p>
+                  <div className="guidance-note" role="note" data-testid={`card-guidance-${info.id}`}>
+                    <div className="kicker">General guidance · not based on this reading</div>
+                    <p>{HEALTH_GUIDANCE[info.id]}</p>
+                    <p className="guidance-boundary">Educational context only; it does not interpret your check-in or replace mission procedures.</p>
+                  </div>
                   <a href={info.sourceUrl} target="_blank" rel="noreferrer" className="src-link" data-testid={`link-source-${info.id}`}>{info.sourceTitle}<ArrowUpRight size={13} /></a>
                 </div>
                 <div className="block"><div className="kicker">What this reading can't tell you</div><p data-testid={`text-limit-${info.id}`}>{info.measurementLimit}</p></div>

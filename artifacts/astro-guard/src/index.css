@@ -745,6 +745,10 @@ body { background: var(--ink); color: var(--text); font-family: var(--app-font-s
 .fine { font-size: 10.5px; color: var(--dim); line-height: 1.5; margin: 10px 0 0; }
 .block { padding: 14px 0; border-top: 1px solid var(--line); }
 .block p { font-size: 13px; line-height: 1.6; color: #c6d3e2; margin: 6px 0 0; }
+.guidance-note { margin-top: 12px; padding: 12px; border: 1px solid rgba(106, 213, 197, .2); border-radius: 10px; background: rgba(106, 213, 197, .045); }
+.guidance-note .kicker { color: var(--mint); font-size: 9px; }
+.guidance-note p { margin-top: 7px; font-size: 12px; line-height: 1.55; }
+.guidance-note .guidance-boundary { color: var(--dim); font-size: 10px; }
 .src-link { display: flex; align-items: center; gap: 4px; margin-top: 8px; color: var(--mint); font-size: 12px; text-decoration: none; }
 .src-link:hover { text-decoration: underline; }
 .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 18px 0; }

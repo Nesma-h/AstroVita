@@ -33,7 +33,7 @@ pnpm --filter @workspace/astro-guard run typecheck
 
 ## Data status
 
-The official challenge page now links NASA HRP hazard, risk, and research information. No challenge-specific astronaut telemetry dataset or sensor feed was exposed in the reviewed resources. Per the user's direction, the dashboard keeps its clearly marked demo scenarios and offers an optional manual check-in. Check-in values stay in page memory and are not sent or saved. Neither mode provides NASA readings, connected sensor data, clinical thresholds, or diagnoses. See `NASA_DATA_ANALYSIS.md` and `resources/resource_inventory.md`.
+The official challenge page now links NASA HRP hazard, risk, and research information. No challenge-specific astronaut telemetry dataset or sensor feed was exposed in the reviewed resources. Per the user's direction, the dashboard keeps its clearly marked demo scenarios and offers an optional manual check-in. Check-in values stay in page memory and are not sent or saved. Selected-system panels include general NASA-cited prevention context that is not based on a reading; there are no NASA readings, connected sensor data, clinical thresholds, or diagnoses. See `NASA_DATA_ANALYSIS.md` and `resources/resource_inventory.md`.
 
 ## Anatomy asset
 
