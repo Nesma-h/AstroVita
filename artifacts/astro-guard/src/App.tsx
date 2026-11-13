@@ -5,31 +5,25 @@ import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { Route, Switch, useLocation, Router as WouterRouter, Redirect } from 'wouter';
-import { AppShell } from '@/components/AppShell';
-import Overview from '@/pages/Overview';
-import Monitoring from '@/pages/Monitoring';
-import DataExplorer from '@/pages/DataExplorer';
-import Analysis from '@/pages/Analysis';
-import Methodology from '@/pages/Methodology';
-import ThreeExplorer from '@/pages/ThreeExplorer';
+import Landing from '@/pages/Landing';
+import Dashboard from '@/pages/Dashboard';
 
 const queryClient = new QueryClient();
 
 function Router() {
   return (
     <RoutedErrorBoundary>
-      <AppShell>
-        <Switch>
-          <Route path="/" component={() => <Redirect to="/overview" />} />
-          <Route path="/overview" component={Overview} />
-          <Route path="/3d-explorer" component={ThreeExplorer} />
-          <Route path="/monitoring" component={Monitoring} />
-          <Route path="/data-explorer" component={DataExplorer} />
-          <Route path="/analysis" component={Analysis} />
-          <Route path="/methodology" component={Methodology} />
-          <Route component={NotFound} />
-        </Switch>
-      </AppShell>
+      <Switch>
+        <Route path="/" component={Landing} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/overview">{() => <Redirect to="/" />}</Route>
+        <Route path="/3d-explorer">{() => <Redirect to="/dashboard" />}</Route>
+        <Route path="/monitoring">{() => <Redirect to="/dashboard" />}</Route>
+        <Route path="/data-explorer">{() => <Redirect to="/" />}</Route>
+        <Route path="/analysis">{() => <Redirect to="/" />}</Route>
+        <Route path="/methodology">{() => <Redirect to="/" />}</Route>
+        <Route component={NotFound} />
+      </Switch>
     </RoutedErrorBoundary>
   );
 }

@@ -5,25 +5,29 @@ export const challengeSource = {
     'https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/?tab=resources',
   reviewedOn: 'November 13, 2026',
   resourceStatus:
-    'The Resources tab currently displays “Resources will be available on Friday, November 13.” No downloadable challenge dataset or document is exposed in the page content available to this review.',
+    'The Resources tab links NASA HRP hazards, human-spaceflight risks, and ongoing research pages, plus Canadian Space Agency references. No challenge-specific telemetry dataset or astronaut sensor feed is exposed in the reviewed content.',
 } as const;
 
 export const challengeContext = {
-  sourceUrl: 'https://www.spaceappschallenge.org/2026/find-a-team/1111/',
-  sourceLabel: 'Challenge description reproduced on the Space Apps platform',
+  sourceUrl: 'https://www.nasa.gov/hrp/risks/',
+  sourceLabel: 'NASA Human Research Program risk context',
   caveat:
-    'The host page labels surrounding content as user-generated. Treat this excerpt as qualitative challenge context, not as a dataset or medical guidance.',
+    'These NASA pages provide qualitative research context, not per-astronaut telemetry, sensor readings, or individualized medical guidance.',
   conditions: [
     'Space radiation',
     'Isolation and confinement',
-    'Altered gravity',
-    'Hostile closed environment',
+    'Distance from Earth',
+    'Gravity fields',
+    'Hostile or closed environments',
   ],
   possibleEffects: [
-    'Immune changes',
-    'Bone loss',
-    'Cardiovascular events',
-    'Behavioral health problems',
+    'Cardiovascular adaptations',
+    'Spaceflight-induced bone changes',
+    'Altered immune responses',
+    'Hypoxia',
+    'Sleep and schedule disruption',
+    'Behavioral health risks',
+    'Spaceflight-associated neuro-ocular syndrome',
   ],
 } as const;
 
@@ -33,19 +37,30 @@ export const datasetStatus = {
   records: null,
   columns: null,
   message:
-    'No official challenge dataset is currently exposed by the Resources tab. Measurements, units, missingness, and analysis are unavailable.',
+    'The official Resources tab links NASA research pages, but no challenge-specific astronaut telemetry dataset or sensor readings are exposed. Measurements, units, and record-level analysis are unavailable.',
 } as const;
 
 export const anatomyAsset = {
   name: 'Écorché',
   modelUrl:
-    'https://raw.githubusercontent.com/Charleeh/ecorche/main/model/ecorche.meshopt.glb',
+    'https://raw.githubusercontent.com/Charleeh/ecorche/320805e06aee51e2e6f6b22533eb2a59d43f2d4d/model/ecorche.meshopt.glb',
   repositoryUrl: 'https://github.com/Charleeh/ecorche',
   license: 'CC BY-SA 4.0',
   credit:
     'Écorché (github.com/Charleeh/ecorche), CC BY-SA 4.0. Based on BodyParts3D, © The Database Center for Life Science, CC BY 4.0, and Z-Anatomy by Gauthier Kervyn, CC BY-SA 4.0.',
-  availableLayers: ['Skeleton', 'Deep muscles', 'Superficial muscles'],
-  unavailableLayers: ['Skin', 'Internal organs'],
+  availableLayers: ['Translucent body shell', 'Skeleton', 'Heart', 'Brain', 'Lungs', 'Immune system context'],
+  unavailableLayers: ['Connected astronaut sensors'],
   limitation:
-    'The source model depicts a single adult male and contains named skeleton and muscle meshes only. It does not include skin or internal organs and is not for clinical use.',
+    'The visualization combines separately sourced educational anatomy meshes. It is not NASA data, does not represent an astronaut scan, and is not for clinical use.',
+} as const;
+
+const BP3D_BASE =
+  'https://raw.githubusercontent.com/Harsh9005/shear-stress-3d-viz/ac802d8aab35645694b2dacef0240006d25247c3/docs/assets/anatomy/';
+
+export const bodyAssets = {
+  body: `${BP3D_BASE}body.glb`,
+  organs: `${BP3D_BASE}organs.glb`,
+  heart: `${BP3D_BASE}heart.glb`,
+  skeleton: anatomyAsset.modelUrl,
+  bodyBounds: { min: [-56.1176, -24.3363, -177.4029], max: [57.8655, 25.2159, 109.0057] },
 } as const;

@@ -31,16 +31,19 @@ Astro-Guard is a NASA Space Apps Challenge research and anatomy visualization we
 ## Architecture decisions
 
 - The application is frontend-only until official challenge data or a real server-side requirement exists.
-- No telemetry, medical thresholds, risk scores, or recommendations are fabricated when challenge datasets are unavailable.
+- NASA HRP pages provide qualitative risk context, but the app has no connected astronaut telemetry dataset or sensor feed.
+- Synthetic demo readings are permitted by the user only when clearly labeled as simulation; never present them as NASA or live sensor data.
+- Do not fabricate clinical thresholds, diagnoses, risk scores, or medical recommendations.
 - The anatomy model is a third-party educational visual asset, not NASA data or a clinical tool.
 
 ## Product
 
-The app presents NASA Space Apps challenge context, an interactive anatomy explorer, source availability, and methodology. Data Explorer and Analysis explicitly report when official measurements are not available.
+The app has two main screens: a short Earth-from-space landing page and an interactive anatomy dashboard. Preserve this simple flow; source and demo-status details should remain secondary to the 3D exploration.
 
 ## User preferences
 
-- Follow the attached Astro-Guard master prompt: research official resources first; keep NASA science distinct from third-party visuals; do not invent scientific data or unsupported medical claims; build a working multi-page web application.
+- Follow the user's latest scope over earlier product directions: concise landing page, then one interactive 3D dashboard.
+- Keep NASA HRP context distinct from third-party anatomy assets and from clearly labeled synthetic demo readings.
 
 ## Gotchas
 
