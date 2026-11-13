@@ -252,40 +252,6 @@ export default function Dashboard() {
       </header>
 
       <div className="dash-grid">
-        <nav className="sys-list" aria-label="Body systems">
-          <div className="kicker">Selected HRP contexts</div>
-          <p className="sys-note">Five illustrative examples, not a full list and not an individual assessment.</p>
-          <ul>
-            {SYSTEM_ORDER.map((id, i) => {
-              const r = readingFor(id, readings, activeCheckIn);
-              const flag = checkInMode ? undefined : sc.flags[id];
-              return (
-                <li key={id}>
-                  <button className={`sys-item${selected === id ? ' on' : ''}`} aria-pressed={selected === id}
-                    onClick={() => setSelected(selected === id ? null : id)} data-testid={`button-system-${id}`}>
-                    <span className="sys-idx">0{i + 1}</span>
-                    <span className="sys-name">{SYSTEMS[id].label}<small>{SYSTEMS[id].short}</small></span>
-                    <span className="sys-val" data-testid={`text-list-reading-${id}`}>
-                      {id === 'immune' && !checkInMode ? 'Lab' : r.value}
-                      {flag === 'watch' && <i className="flag" title="Scripted demo flag" aria-label="scripted demo flag" />}
-                    </span>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-          <div className="scenario-blurb" data-testid="text-scenario-blurb">
-            <span className="kicker">{checkInMode ? 'Check-in' : 'Scenario'}</span>
-            <AnimatePresence mode="wait">
-              <motion.p key={checkInMode ? 'checkin' : scenario} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.25 }}>
-                {checkInMode
-                  ? `Entered locally at ${checkInTime}. Values do not update automatically.`
-                  : `${sc.blurb} ${paused ? 'Demo paused.' : 'Values tick every 2 s.'}`}
-              </motion.p>
-            </AnimatePresence>
-          </div>
-        </nav>
-
         <section className="stage-wrap" aria-label="3D anatomy view">
           <div className="stage" ref={stageRef} data-testid="stage-anatomy">
             {webgl && SYSTEM_ORDER.map((id) => (
@@ -306,7 +272,7 @@ export default function Dashboard() {
           {!webgl && (
             <div className="stage-overlay" role="alert" data-testid="status-webgl-unavailable">
               <h3>3D view unavailable</h3>
-              <p>This browser has WebGL turned off. Use the system list on the left; readings and sources still work.</p>
+              <p>This browser has WebGL turned off. Enable WebGL or use a supported browser to inspect body systems.</p>
             </div>
           )}
           {webgl && status.kind === 'loading' && (
@@ -383,19 +349,8 @@ export default function Dashboard() {
                 <div className="kicker">{checkInMode ? 'Crew check-in · local' : 'Crew member · demo'}</div>
                 <h2>Full body</h2>
                 <p className="lede">{checkInMode
-                  ? 'Pick a system to review only the values entered in this check-in.'
-                  : 'Pick a system on the body or in the list. The view will move in close and show its demo reading.'}</p>
-                <div className="mini-grid">
-                  {SYSTEM_ORDER.map((id) => {
-                    const r = readingFor(id, readings, activeCheckIn);
-                    return (
-                      <button key={id} className="mini" onClick={() => setSelected(id)} data-testid={`card-reading-${id}`}>
-                        <span className="kicker">{SYSTEMS[id].label}</span>
-                        <span className={`mini-val${r.isText ? ' text' : ''}`} data-testid={`text-overview-reading-${id}`}>{r.value} <small>{r.unit}</small></span>
-                      </button>
-                    );
-                  })}
-                </div>
+                  ? 'Select a highlighted point on the body to review values entered for that system.'
+                  : 'Select a highlighted point on the body to view its demo reading and NASA context.'}</p>
                 {!checkInMode && <p className="fine">{DEMO_DISCLAIMER}</p>}
               </motion.div>
             )}

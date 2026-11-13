@@ -78,7 +78,7 @@ export function createAnatomyEngine(stage: HTMLElement, cb: EngineCallbacks): An
   renderer.toneMappingExposure = 1.1;
   renderer.setClearColor(0x000000, 0);
   renderer.domElement.setAttribute('role', 'img');
-  renderer.domElement.setAttribute('aria-label', 'Translucent 3D human body. Drag to orbit, scroll to zoom. Use the system list for keyboard selection.');
+  renderer.domElement.setAttribute('aria-label', 'Translucent 3D human body. Drag to orbit, scroll to zoom, and click a highlighted marker to inspect a body system.');
   renderer.domElement.dataset.testid = 'canvas-anatomy';
   stage.appendChild(renderer.domElement);
 
