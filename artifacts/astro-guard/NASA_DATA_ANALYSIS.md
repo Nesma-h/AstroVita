@@ -35,6 +35,8 @@ No actual observations are available. Record counts, field names, data types, un
 
 At the user's direction, the interface may show **synthetic demo readings** to demonstrate interaction and animation. These are application-authored scenarios, visibly labeled **DEMO / SIMULATED** and never presented as NASA or astronaut sensor data. A scripted scenario state is not a medical risk classification; no invented clinical thresholds, diagnosis, treatment, or NASA recommendation is shown. Example activity/sleep values are demonstrations only. Immune and bone status must not be portrayed as inferred from a wearable sensor.
 
+The dashboard also has an optional manual check-in for challenge-listed examples (heart rate, blood pressure, blood glucose, body temperature, sleep, mood) plus breathing and exercise. Values are labeled user-entered, remain in browser page memory only, and are not transmitted or saved. They are displayed as raw entries without automatically classifying them. A paired blood-pressure value is required only when either component is provided. No mission-specific clinical ranges or treatment instructions are currently available in the reviewed resources.
+
 ## Application use and limitations
 
 - The NASA pages support concise qualitative source notes and links; they do not supply a live feed or a challenge telemetry dataset.

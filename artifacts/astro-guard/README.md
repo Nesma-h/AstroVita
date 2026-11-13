@@ -4,13 +4,22 @@ A two-screen astronaut-health visualization for the NASA Space Apps Challenge â€
 
 ## Run
 
-From the workspace root:
+In the Replit workspace, run from the workspace root:
 
 ```bash
 pnpm --filter @workspace/astro-guard run dev
 ```
 
-The app is served through its managed Replit web workflow. For a static check, run:
+For local development, install workspace dependencies first, then provide the Vite variables normally supplied by Replit:
+
+```bash
+pnpm install
+PORT=5173 BASE_PATH=/ pnpm --filter @workspace/astro-guard run dev
+```
+
+Open `http://localhost:5173`. Node.js 24 and pnpm are used by this workspace.
+An internet connection is needed to download the anatomy models on first load.
+The app is also served through its managed Replit web workflow. For a static check, run:
 
 ```bash
 pnpm --filter @workspace/astro-guard run typecheck
@@ -24,7 +33,7 @@ pnpm --filter @workspace/astro-guard run typecheck
 
 ## Data status
 
-The official challenge page now links NASA HRP hazard, risk, and research information. No challenge-specific astronaut telemetry dataset or sensor feed was exposed in the reviewed resources. Per the user's direction, the dashboard uses clearly marked local demo values only. They are not NASA readings, connected sensor data, clinical thresholds, or diagnoses. See `NASA_DATA_ANALYSIS.md` and `resources/resource_inventory.md`.
+The official challenge page now links NASA HRP hazard, risk, and research information. No challenge-specific astronaut telemetry dataset or sensor feed was exposed in the reviewed resources. Per the user's direction, the dashboard keeps its clearly marked demo scenarios and offers an optional manual check-in. Check-in values stay in page memory and are not sent or saved. Neither mode provides NASA readings, connected sensor data, clinical thresholds, or diagnoses. See `NASA_DATA_ANALYSIS.md` and `resources/resource_inventory.md`.
 
 ## Anatomy asset
 

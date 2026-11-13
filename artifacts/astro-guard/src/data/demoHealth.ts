@@ -22,7 +22,7 @@ export const SYSTEMS: Record<SystemId, SystemInfo> = {
     sourceUrl: 'https://www.nasa.gov/reference/risk-of-cardiovascular-adaptations/',
     sourceTitle: 'NASA HRP: Risk of Cardiovascular Adaptations',
     context: 'NASA lists cardiovascular adaptations as a spaceflight risk: weightlessness changes how blood moves through the body and how the heart works.',
-    measurementLimit: 'Demo heart rate only. A number like this cannot show how the heart has adapted to space.',
+    measurementLimit: 'Heart rate and blood pressure are individual readings; neither tells you how the heart has adapted to space.',
     visualAnimation: 'The real heart mesh beats at the demo bpm shown here. Faster scenario, faster beat.',
   },
   lungs: {
@@ -32,7 +32,7 @@ export const SYSTEMS: Record<SystemId, SystemInfo> = {
     sourceUrl: 'https://www.nasa.gov/reference/risk-of-hypoxia/',
     sourceTitle: 'NASA HRP: Risk of Hypoxia',
     context: 'NASA lists hypoxia, not getting enough oxygen, as a risk to manage in spacecraft and suit environments.',
-    measurementLimit: 'Demo breathing rate only. It does not measure oxygen in the blood or in the cabin.',
+    measurementLimit: 'Breathing rate alone does not measure oxygen levels in the blood or cabin.',
     visualAnimation: 'Both lung meshes expand and relax at the demo breaths per minute.',
   },
   brain: {
@@ -42,7 +42,7 @@ export const SYSTEMS: Record<SystemId, SystemInfo> = {
     sourceUrl: 'https://www.nasa.gov/reference/risk-from-inadequate-sleep-and-irregular-schedules/',
     sourceTitle: 'NASA HRP: Risk from Inadequate Sleep and Irregular Schedules',
     context: 'NASA lists inadequate sleep and irregular schedules as a risk. Crews work in shifts, with light and noise that differ from Earth.',
-    measurementLimit: 'Demo sleep hours only. Nothing here scans the brain or measures sleep quality.',
+    measurementLimit: 'Sleep hours and mood are self-reported. Neither scans the brain or measures sleep quality.',
     visualAnimation: 'A slow glow drifts across the brain mesh. It is a highlight, not brain activity.',
   },
   skeletal: {
@@ -52,7 +52,7 @@ export const SYSTEMS: Record<SystemId, SystemInfo> = {
     sourceUrl: 'https://www.nasa.gov/reference/risk-of-spaceflight-induced-bone-changes/',
     sourceTitle: 'NASA HRP: Risk of Spaceflight-Induced Bone Changes',
     context: 'NASA lists bone changes as a risk: without gravity loading the skeleton, bones can lose density over a mission.',
-    measurementLimit: 'Demo exercise minutes only. Bone density cannot be inferred from a wearable or from this app.',
+    measurementLimit: 'Exercise minutes do not measure bone density. This app does not infer bone changes from activity.',
     visualAnimation: 'A light band travels along the skeleton to show where load matters. It is not a bone scan.',
   },
   immune: {
@@ -62,7 +62,7 @@ export const SYSTEMS: Record<SystemId, SystemInfo> = {
     sourceUrl: 'https://www.nasa.gov/reference/risk-of-altered-immune-system-responses/',
     sourceTitle: 'NASA HRP: Risk of Altered Immune System Responses',
     context: 'NASA lists altered immune responses as a risk. The immune system is spread through the whole body, so it is shown as a body-wide field, not one organ.',
-    measurementLimit: 'Immune status comes from lab samples, not wearables. The status below is a scripted demo sample state, not a result.',
+    measurementLimit: 'Immune status requires an appropriate lab sample; this check-in does not include an immune test result.',
     visualAnimation: 'Soft points pulse across the whole body to stand for a system-wide network. No organ is singled out.',
   },
 };
