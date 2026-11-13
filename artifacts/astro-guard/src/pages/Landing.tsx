@@ -13,13 +13,13 @@ export default function Landing() {
         transition={{ duration: 2.2, ease: [0.16, 0.8, 0.2, 1] }} />
       <div className="landing-copy">
         <div className="landing-mark">
-          <span className="brand-orb" aria-hidden="true" /> Astro-Guard
+          <span className="brand-orb" aria-hidden="true" /> AstroVita
         </div>
         <h1 data-testid="text-landing-title">
           Earth is behind you.<br /><em>Your body comes along.</em>
         </h1>
         <p>
-          Astro-Guard shows how spaceflight touches the heart, lungs, brain, bones and immune system, on a see-through body you can turn and explore.
+          AstroVita shows how spaceflight touches the heart, lungs, brain, bones and immune system, on a see-through body you can turn and explore.
         </p>
         <div>
           <Link href="/dashboard" className="start-btn" data-testid="button-start">

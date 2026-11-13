@@ -10,7 +10,7 @@ export default function Overview() {
       <PageHeader
         index="00"
         title="A clearer view of the evidence."
-        description="Astro-Guard is a research-first exploration of astronaut health monitoring. It separates verified challenge context from an anatomical learning model—and makes the current data gap visible."
+        description="AstroVita is a research-first exploration of astronaut health monitoring. It separates verified challenge context from an anatomical learning model—and makes the current data gap visible."
         aside={<div className="meta-label">MISSION CONTEXT<br /><span style={{ color: '#435c69', lineHeight: 2 }}>SPACE APPS CHALLENGE / 2026</span></div>}
       />
       <div className="notice fade-in" data-testid="status-dataset-unavailable">

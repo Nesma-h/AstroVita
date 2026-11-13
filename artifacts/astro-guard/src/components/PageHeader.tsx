@@ -14,7 +14,7 @@ export function PageHeader({
   return (
     <div className="title-row fade-in">
       <div>
-        <div className="eyebrow">ASTRO-GUARD / RESEARCH NOTE {index}</div>
+        <div className="eyebrow">ASTROVITA / RESEARCH NOTE {index}</div>
         <h1 className="page-title" data-testid={`heading-page-${index}`}>{title}</h1>
         <p className="page-lede" data-testid={`text-page-description-${index}`}>{description}</p>
       </div>

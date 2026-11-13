@@ -1,6 +1,6 @@
 kind = "web"
 previewPath = "/"
-title = "Astro-Guard"
+title = "AstroVita"
 description = "A NASA Space Apps Challenge health-monitoring research and visualization platform, grounded in the official challenge resources and designed for astronauts, mission specialists, and judges."
 version = "1.0.0"
 id = "artifacts/astro-guard"

@@ -115,7 +115,7 @@ export function HealthCheckInDrawer({
               Enter any values already measured with a mission-approved method. You can leave any field blank.
             </p>
             <div className="checkin-privacy" role="note" data-testid="text-checkin-privacy">
-              This entry stays in this page only. It is not sent to a server or saved after refresh. Astro-Guard does not classify readings, diagnose conditions, or set medical limits.
+              This entry stays in this page only. It is not sent to a server or saved after refresh. AstroVita does not classify readings, diagnose conditions, or set medical limits.
             </div>
 
             <Form {...form}>

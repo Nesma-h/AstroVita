@@ -40,7 +40,7 @@ export default function DataExplorer() {
         <section>
           <div className="section-kicker">Unavailable by design</div>
           <h2 className="section-heading" style={{ marginTop: 10 }}>No fabricated rows.</h2>
-          <p className="body-copy">There are no observations from which to report fields, types, units, missingness, distributions, or relationships. Astro-Guard creates no simulated astronaut data to fill that gap.</p>
+          <p className="body-copy">There are no observations from which to report fields, types, units, missingness, distributions, or relationships. AstroVita creates no simulated astronaut data to fill that gap.</p>
           <div className="rule" />
           <a className="inline-link" href={challengeSource.url} target="_blank" rel="noreferrer" data-testid="link-official-challenge"><FileText size={13} style={{ verticalAlign: 'middle', marginRight: 5 }} />Official challenge page <ArrowUpRight size={12} style={{ verticalAlign: 'middle' }} /></a>
         </section>

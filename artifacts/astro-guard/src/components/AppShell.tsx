@@ -29,7 +29,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <div className="brand-lockup">
           <div className="brand-mark" aria-hidden="true"><Orbit size={19} strokeWidth={1.5} /></div>
           <div>
-            <div className="brand-name">ASTRO-GUARD</div>
+            <div className="brand-name">ASTROVITA</div>
             <div className="brand-sub">RESEARCH INTERFACE / 01</div>
           </div>
         </div>
@@ -55,7 +55,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       </aside>
       <div className="main-column">
         <header className="topbar">
-          <div className="breadcrumb"><span>Astro-Guard</span><span>/</span><strong>{current?.label ?? 'Overview'}</strong></div>
+          <div className="breadcrumb"><span>AstroVita</span><span>/</span><strong>{current?.label ?? 'Overview'}</strong></div>
           <div className="top-meta">
             <span className="live-mark"><span className="status-dot" />STATIC RESEARCH BUILD</span>
             <span>REV. 01</span>
