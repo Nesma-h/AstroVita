@@ -1,6 +1,6 @@
-# [Project name]
+# Astro-Guard
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Astro-Guard is a NASA Space Apps Challenge research and anatomy visualization web app that keeps challenge data, visual assets, and software-generated displays clearly separated.
 
 ## Run & Operate
 
@@ -22,23 +22,30 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/astro-guard/` — Astro-Guard React/Vite web app
+- `artifacts/astro-guard/src/data/researchStatus.ts` — source status, qualitative challenge context, and anatomy model provenance used by the UI
+- `artifacts/astro-guard/resources/resource_inventory.md` — official resource inventory and visual asset attribution
+- `artifacts/astro-guard/NASA_DATA_ANALYSIS.md` — dataset availability and scientific data limitations
+- `artifacts/astro-guard/PROJECT_ARCHITECTURE.md` — routes, implementation approach, and data-integrity rules
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The application is frontend-only until official challenge data or a real server-side requirement exists.
+- No telemetry, medical thresholds, risk scores, or recommendations are fabricated when challenge datasets are unavailable.
+- The anatomy model is a third-party educational visual asset, not NASA data or a clinical tool.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+The app presents NASA Space Apps challenge context, an interactive anatomy explorer, source availability, and methodology. Data Explorer and Analysis explicitly report when official measurements are not available.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Follow the attached Astro-Guard master prompt: research official resources first; keep NASA science distinct from third-party visuals; do not invent scientific data or unsupported medical claims; build a working multi-page web application.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- The challenge Resources tab showed only a “Resources will be available on Friday, November 13” notice when reviewed on November 13, 2026. Recheck it before adding datasets.
+- The selected Écorché GLB is meshopt-compressed and only includes skeleton and muscle meshes; skin and internal organs are not in the asset.
 
 ## Pointers
 

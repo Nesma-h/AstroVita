@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Astro-Guard"
+description = "A NASA Space Apps Challenge health-monitoring research and visualization platform, grounded in the official challenge resources and designed for astronauts, mission specialists, and judges."
+version = "1.0.0"
+id = "artifacts/astro-guard"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23145
+
+[services.development]
+run = "pnpm --filter @workspace/astro-guard run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/astro-guard", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/astro-guard/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23145"
+BASE_PATH = "/"

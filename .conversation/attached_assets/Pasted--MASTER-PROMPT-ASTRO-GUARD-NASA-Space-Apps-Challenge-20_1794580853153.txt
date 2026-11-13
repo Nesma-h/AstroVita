@@ -1,0 +1,888 @@
+# MASTER PROMPT — ASTRO-GUARD | NASA Space Apps Challenge 2026
+
+## Project: Complete Research, Data Discovery, 3D Visualization & Website Development
+
+You are acting as a senior full-stack developer, 3D visualization engineer, UI/UX designer, and scientific data engineer.
+
+Your task is to understand, design, and build a complete, professional, multi-page web application for our NASA Space Apps Challenge 2026 project.
+
+The working project name is:
+
+**ASTRO-GUARD — Astronaut Health Monitoring & Visualization System**
+
+We want to build a scientifically accurate, visually impressive, interactive platform that transforms the official NASA-provided resources and conditions into an intuitive experience suitable for astronauts, mission specialists, and NASA Space Apps judges.
+
+This is not a generic dashboard project.
+
+We want a carefully engineered scientific web application with a central interactive 3D anatomical visualization, structured data exploration, and a professional multi-page architecture.
+
+---
+
+# PART 1 — OFFICIAL NASA RESOURCES DISCOVERY
+
+## 1.1 Official Challenge Page
+
+Start by investigating the official NASA Space Apps Challenge page:
+
+https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/?tab=resources
+
+Your first responsibility is to discover and collect all resources officially provided for this challenge.
+
+Use your available browsing, website navigation, and file download capabilities to investigate the Resources section.
+
+Look for:
+
+- Official datasets.
+- CSV files.
+- Excel files.
+- PDF documents.
+- Scientific documentation.
+- Research references.
+- Technical guidelines.
+- Conditions and requirements.
+- Any additional downloadable resources directly associated with the challenge.
+
+Do not limit your investigation to the visible text on the main challenge page. Follow relevant official resource links and inspect the actual files whenever accessible.
+
+## 1.2 Resource Collection
+
+For each discovered resource:
+
+1. Identify its name and original source.
+2. Open or download it when accessible.
+3. Inspect its actual contents.
+4. Determine its relevance to the project.
+5. Preserve the original downloaded file.
+6. Organize the resources in a dedicated project directory.
+
+Suggested directory:
+
+```text
+project/
+├── public/
+│   └── assets/
+├── resources/
+│   ├── original_datasets/
+│   ├── documentation/
+│   ├── references/
+│   └── resource_inventory.md
+├── src/
+└── README.md
+```
+
+Keep original datasets unchanged.
+
+If a resource requires authentication, do not attempt to bypass access restrictions.
+
+Tell me exactly what is inaccessible and what action is required. Never request my account password, session cookies, authentication tokens, or verification codes.
+
+If a resource cannot be downloaded automatically, provide its exact link so I can supply it manually.
+
+## 1.3 Dataset Understanding
+
+Before using any dataset, analyze it carefully.
+
+For every dataset, identify:
+
+- Dataset name and description.
+- File format.
+- Number of records and columns, where applicable.
+- Column names.
+- Data types.
+- Units of measurement.
+- Missing values.
+- Available conditions.
+- Scientific meaning of the variables.
+- Documented relationships between variables.
+- Any limitations mentioned in the official documentation.
+
+Create a structured documentation file named:
+
+`NASA_DATA_ANALYSIS.md`
+
+This file must describe the actual resources and explain how each relevant variable can be used in the application.
+
+Do not guess missing information.
+
+## 1.4 Strict Scientific Data Policy
+
+This requirement overrides all other development instructions.
+
+**Use ONLY the official NASA-provided datasets, conditions, and documentation supplied for this challenge and to our team.**
+
+Do not:
+
+- Add external datasets.
+- Generate additional scientific measurements.
+- Invent medical indicators.
+- Invent numerical thresholds.
+- Invent risk classifications.
+- Assume relationships between variables.
+- Fabricate NASA recommendations.
+- Present simulated data as real measurements.
+- Add unsupported medical protocols or countermeasures.
+
+Every displayed scientific value must be traceable to an actual source.
+
+If a threshold is not explicitly provided, do not create one.
+
+If a variable is unavailable, clearly indicate that it is unavailable.
+
+If a scientific relationship is not documented, do not present it as an established fact.
+
+You may implement mathematical calculations and analytical techniques when they are appropriate and clearly supported by the actual data and documented methodology.
+
+Keep scientific conclusions separate from software-generated assumptions.
+
+---
+
+# PART 2 — UNDERSTAND THE PROJECT BEFORE BUILDING
+
+After collecting and analyzing the available resources, understand the actual purpose of the challenge.
+
+Determine:
+
+1. What problem the challenge is asking us to solve.
+2. What information astronauts need to monitor.
+3. Which conditions are officially relevant.
+4. What information can be extracted from the provided datasets.
+5. Which variables are suitable for visualization.
+6. How the 3D model can help communicate the project's scientific information.
+7. What features would genuinely improve the astronaut's experience.
+
+Do not add features just because they are common in medical dashboards.
+
+Every feature must have a clear connection to the actual project objective.
+
+The application should make complex scientific information understandable without sacrificing accuracy.
+
+---
+
+# PART 3 — 3D HUMAN ANATOMICAL MODEL
+
+## CRITICAL REQUIREMENT — FOLLOW THE ATTACHED REFERENCE VIDEO
+
+We will attach a reference video demonstrating the exact 3D anatomical visualization style we want.
+
+**The attached video is the primary visual reference for this feature.**
+
+Study the video carefully before selecting or implementing the 3D model.
+
+The model is one of the most important elements of the entire project.
+
+We do not want a generic 3D human character or a static anatomical image.
+
+We want a genuine, interactive 3D anatomical experience.
+
+## 3.1 Reference Model Appearance
+
+The reference demonstrates a human anatomical visualization with different visible anatomical layers, including:
+
+1. External human body and skin.
+2. Skeletal system.
+3. Muscular system.
+4. Internal organs, including visible structures such as the heart and lungs.
+
+Reproduce the visual presentation as closely as technically possible.
+
+Pay particular attention to:
+
+- Overall human body shape.
+- Anatomical proportions.
+- Front-facing presentation.
+- Camera perspective.
+- Zoom level.
+- Anatomical detail.
+- Transitions between anatomical layers.
+- How internal structures become visible.
+- Animation timing and movement.
+- Overall scientific visualization style.
+
+Do not substitute the reference with a different 3D object.
+
+Do not simplify the model into a collection of colored geometric shapes.
+
+## 3.2 Anatomical Layer Interaction
+
+Where supported by the actual 3D asset, users should be able to:
+
+- Switch between anatomical layers.
+- Show or hide the external skin layer.
+- Explore the skeletal system.
+- Explore the muscular system.
+- Inspect internal organs.
+- Rotate the model.
+- Zoom in and out.
+- Select specific anatomical structures.
+- Highlight selected regions.
+- Return to the complete human body view.
+
+Use smooth transitions between layers.
+
+Make the model feel like a real scientific anatomical exploration tool.
+
+## 3.3 Interactive Anatomical Regions
+
+Allow users to interact with relevant anatomical regions.
+
+When a region is selected:
+
+- Highlight the selected structure.
+- Display its name.
+- Display relevant information supported by the official project resources.
+- Show related dataset conditions only when a documented connection exists.
+- Provide a clear way to navigate to additional relevant information.
+
+Do not automatically assign health risks to anatomical regions without scientific support.
+
+The anatomical visualization should be connected to the actual challenge requirements, not filled with unrelated medical information.
+
+## 3.4 3D Technical Implementation
+
+Preferred technologies:
+
+- Three.js.
+- React Three Fiber.
+- React Three Drei.
+
+Prefer a real anatomical 3D model with independently accessible meshes and anatomical layers.
+
+GLB/GLTF assets are preferred when suitable.
+
+If an appropriate model is not included in the provided resources:
+
+1. Identify the required technical specifications.
+2. Determine the most suitable way to obtain or create a compatible model.
+3. Clearly distinguish third-party visual assets from official NASA scientific data.
+4. Do not introduce external scientific datasets.
+5. Preserve the visual structure and behavior of the reference video.
+
+Do not claim that a model is an exact reproduction if its geometry has not been reconstructed accurately.
+
+Implement reliable rendering and fallback handling for WebGL failures.
+
+Keep the 3D model and its rendering logic independent from the rest of the application.
+
+---
+
+# PART 4 — MULTI-PAGE WEBSITE ARCHITECTURE
+
+## 4.1 General Requirement
+
+Do NOT build a single-page dashboard containing all project features.
+
+We explicitly want a true multi-page web application.
+
+Each page must have a clear responsibility and a professional layout.
+
+The navigation must be consistent throughout the website.
+
+Use a persistent navigation system, such as a clean left sidebar combined with a compact top navigation bar.
+
+The interface should make it easy to move between different sections without overwhelming the user.
+
+## 4.2 Proposed Page Structure
+
+The following structure is a starting point. You must adapt it based on the actual NASA resources and project requirements.
+
+### PAGE 1 — Overview
+
+Route: `/overview`
+
+Purpose: Introduce the project and provide a clear summary of the most relevant available information.
+
+Potential content:
+
+- Project identity.
+- Mission context.
+- Short project introduction.
+- Important available dataset summaries.
+- Key documented conditions.
+- Quick access to the 3D Explorer.
+- Important insights derived from the actual data.
+
+Keep this page clean and informative.
+
+Do not overcrowd it with every feature.
+
+### PAGE 2 — 3D Anatomical Explorer
+
+Route: `/3d-explorer`
+
+Purpose: Provide a dedicated, immersive experience for the reference-based anatomical 3D model.
+
+This should be one of the most visually impressive pages.
+
+Include:
+
+- Large interactive human anatomical model.
+- Anatomical layer controls.
+- Rotation and zoom controls.
+- Anatomical structure selection.
+- Contextual information panels.
+- Relevant project conditions when supported by the data.
+- Clear navigation to related sections.
+
+Give the model enough screen space.
+
+Do not surround it with unnecessary dashboard cards.
+
+### PAGE 3 — Conditions & Monitoring
+
+Route: `/monitoring`
+
+Purpose: Present the actual conditions and monitoring variables provided by NASA.
+
+Organize information logically.
+
+For each condition or variable, display relevant available information such as:
+
+- Name.
+- Description.
+- Measurement unit.
+- Actual recorded values, if available.
+- Relevant documentation.
+- Associated anatomical region, if scientifically supported.
+
+The layout should make the information easy to understand.
+
+Do not add variables that are absent from the official resources.
+
+### PAGE 4 — Data Explorer
+
+Route: `/data-explorer`
+
+Purpose: Allow users to explore the official datasets.
+
+Potential functionality:
+
+- Dataset selection when multiple datasets exist.
+- Search and filtering.
+- Structured data tables.
+- Variable descriptions.
+- Data summaries.
+- Missing-value information.
+- Appropriate visual representations.
+
+Every displayed value must come from the original NASA-provided data or a clearly documented calculation.
+
+### PAGE 5 — Analysis & Insights
+
+Route: `/analysis`
+
+Purpose: Present meaningful analytical results derived from the available data.
+
+Use appropriate visualizations, such as:
+
+- Line charts.
+- Bar charts.
+- Distribution plots.
+- Comparisons.
+- Statistical summaries.
+
+Only create visualizations that make sense for the actual dataset.
+
+Avoid unnecessary charts.
+
+Explain what each visualization represents.
+
+Do not present correlations as causation or unsupported scientific conclusions as established facts.
+
+### PAGE 6 — Scientific References & Methodology
+
+Route: `/methodology`
+
+Purpose: Explain where the information comes from and how the platform processes it.
+
+Include:
+
+- Official resource references.
+- Dataset descriptions.
+- Scientific definitions.
+- Data-processing methodology.
+- Calculations and assumptions.
+- Known limitations.
+
+Distinguish between official NASA information and our own software implementation.
+
+Additional pages may be introduced only if they provide genuine value to the project.
+
+Do not force unnecessary pages.
+
+---
+
+# PART 5 — UI/UX DESIGN SYSTEM
+
+## 5.1 Overall Design Direction
+
+The website must look like a professional scientific space-technology platform.
+
+The desired visual identity is:
+
+- Modern.
+- Minimal.
+- Clean.
+- Futuristic.
+- Scientific.
+- Sophisticated.
+- Easy to navigate.
+- Suitable for professional presentations.
+
+We want a design that looks carefully designed rather than automatically generated from a generic dashboard template.
+
+## 5.2 Color Palette
+
+Use a restrained and cohesive color palette.
+
+Suggested direction:
+
+- Deep navy / near-black backgrounds.
+- White for primary text.
+- Soft gray for secondary text.
+- A carefully selected primary accent color.
+- A secondary accent color used sparingly.
+
+Suggested colors:
+
+- Background: `#0B1220`
+- Secondary Background: `#111C2E`
+- Primary Text: `#F1F5F9`
+- Secondary Text: `#94A3B8`
+- Primary Accent: `#60A5FA`
+- Secondary Accent: `#2DD4BF`
+
+These are initial suggestions, not mandatory colors.
+
+Adjust the palette when necessary to achieve the best visual result.
+
+**Avoid excessive gradients.**
+
+Do not use gradients as the main visual identity.
+
+Avoid:
+
+- Excessive neon effects.
+- Excessive glow.
+- Excessive glassmorphism.
+- Too many accent colors.
+- Overloaded backgrounds.
+- Unnecessary decorative animations.
+
+Use subtle borders, shadows, and highlights.
+
+## 5.3 Typography
+
+Use a modern, readable font system.
+
+Possible choices:
+
+- Inter.
+- Manrope.
+- Plus Jakarta Sans.
+
+Use consistent typography throughout the application.
+
+Scientific metrics and data labels must remain readable.
+
+Establish clear hierarchy between:
+
+- Page titles.
+- Section headings.
+- Descriptions.
+- Metrics.
+- Labels.
+- Supporting information.
+
+## 5.4 Layout and Navigation
+
+Create a consistent shared layout.
+
+Suggested elements:
+
+**Sidebar:**
+- Project logo and name.
+- Main navigation links.
+- Active page indicator.
+- Clear and minimal icons.
+
+**Top Navigation:**
+- Current page title.
+- Relevant page actions.
+- Optional mission context when supported by project data.
+
+**Main Content:**
+- Appropriate content width.
+- Consistent spacing.
+- Well-organized sections.
+- Clear information hierarchy.
+
+Do not repeat the same dashboard elements on every page unnecessarily.
+
+## 5.5 Large Monitor Presentation
+
+Our main presentation environment is a desktop monitor.
+
+Prioritize:
+
+- Desktop-first layouts.
+- High-quality 3D rendering.
+- Balanced content distribution.
+- Readable charts and metrics.
+- Consistent spacing.
+- Professional presentation.
+
+The application should also remain usable on tablets and smaller screens.
+
+---
+
+# PART 6 — TECHNICAL STACK & CODE ARCHITECTURE
+
+## 6.1 Preferred Technologies
+
+Use:
+
+- React.
+- TypeScript.
+- Vite.
+- Tailwind CSS.
+- React Router.
+- Lucide React.
+- Three.js / React Three Fiber / React Three Drei.
+- Recharts or another suitable charting library.
+
+Choose additional libraries only when genuinely necessary.
+
+Avoid unnecessary dependencies.
+
+## 6.2 Suggested Folder Structure
+
+Create a modular and scalable structure similar to:
+
+```text
+src/
+├── app/
+│   ├── App.tsx
+│   ├── router.tsx
+│   └── providers/
+│
+├── components/
+│   ├── layout/
+│   ├── navigation/
+│   ├── cards/
+│   ├── charts/
+│   └── shared/
+│
+├── pages/
+│   ├── Overview/
+│   ├── AnatomicalExplorer/
+│   ├── Monitoring/
+│   ├── DataExplorer/
+│   ├── Analysis/
+│   └── Methodology/
+│
+├── features/
+│   ├── anatomy/
+│   ├── monitoring/
+│   ├── datasets/
+│   └── analytics/
+│
+├── visualization/
+│   ├── three/
+│   ├── models/
+│   └── controls/
+│
+├── data/
+│   ├── loaders/
+│   ├── processors/
+│   └── schemas/
+│
+├── hooks/
+├── services/
+├── types/
+├── utils/
+└── styles/
+```
+
+You may adjust this structure based on actual implementation requirements.
+
+## 6.3 Code Quality
+
+Requirements:
+
+- Use TypeScript properly.
+- Separate UI from business logic.
+- Separate data processing from visualization.
+- Build reusable components.
+- Avoid duplicated code.
+- Use clear naming conventions.
+- Keep components reasonably small.
+- Maintain consistent styling.
+- Handle errors gracefully.
+- Keep configuration centralized.
+- Document important and complex logic.
+
+Do not put the entire application inside one large component.
+
+Do not mix all pages, charts, and 3D logic in a single file.
+
+The project must remain easy for our team to understand, maintain, and extend.
+
+---
+
+# PART 7 — DATA INTEGRATION
+
+After completing resource discovery and analysis, integrate the actual official datasets into the application.
+
+Requirements:
+
+1. Preserve original data files.
+2. Create appropriate data-loading modules.
+3. Validate incoming data.
+4. Handle missing values appropriately.
+5. Use accurate data types and units.
+6. Keep processing logic separate from presentation.
+7. Ensure that all charts and metrics update from their underlying data.
+8. Avoid hardcoded values where real data is available.
+
+If multiple datasets exist, organize them clearly and establish relationships only when supported by official documentation.
+
+Do not build unnecessary backend infrastructure if the project can operate reliably with the provided local datasets.
+
+Choose the simplest architecture that satisfies the actual requirements.
+
+If a backend is necessary, explain why and implement it in a modular way.
+
+---
+
+# PART 8 — INTERACTIONS & FUNCTIONALITY
+
+The website must be genuinely functional.
+
+Examples of expected interactions:
+
+- Working navigation between pages.
+- Interactive 3D model.
+- Anatomical layer switching.
+- Anatomical region selection.
+- Search and filtering.
+- Dataset exploration.
+- Chart interactions.
+- Expandable information panels.
+- Contextual navigation between related sections.
+
+All interactive controls must have real functionality.
+
+Do not create buttons that look functional but do nothing.
+
+Do not add fake live telemetry or pretend to connect to NASA systems.
+
+If a feature is a local demonstration rather than a real integration, label it clearly.
+
+Do not introduce an emergency medical system or automated treatment recommendations unless explicitly supported by the challenge requirements and official documentation.
+
+---
+
+# PART 9 — RESPONSIVENESS & PLATFORM SCOPE
+
+This project is a WEB APPLICATION.
+
+We explicitly do NOT want:
+
+- Android application development.
+- iOS application development.
+- Native mobile applications.
+- APK generation.
+- Application compilation.
+- Electron desktop application packaging.
+
+Focus entirely on a professional, working website.
+
+The main target is a desktop browser on a large monitor.
+
+Ensure responsive behavior for tablets and smaller screens without compromising the desktop experience.
+
+---
+
+# PART 10 — DEVELOPMENT WORKFLOW
+
+Follow the phases below in order.
+
+Do not skip the research phase and immediately generate a generic website.
+
+## PHASE 1 — Resource Discovery & Research
+
+1. Investigate the official NASA Challenge page.
+2. Inspect the Resources section.
+3. Collect all accessible official resources.
+4. Download relevant datasets and documents.
+5. Analyze the actual data.
+6. Inspect the challenge requirements.
+7. Identify any inaccessible resources.
+8. Analyze the attached 3D reference video.
+
+Deliverables:
+
+- `resource_inventory.md`
+- `NASA_DATA_ANALYSIS.md`
+- Organized original resource files.
+- A summary of the actual project requirements.
+
+## PHASE 2 — Architecture & Planning
+
+Based on the actual project requirements:
+
+1. Define the final page structure.
+2. Define the navigation flow.
+3. Define the shared layout.
+4. Define the design system.
+5. Define the 3D implementation approach.
+6. Define the data-loading architecture.
+7. Define the main components.
+8. Identify technical limitations.
+
+Document the proposed architecture in:
+
+`PROJECT_ARCHITECTURE.md`
+
+The suggested pages in this prompt should be adapted if the actual data or challenge requirements justify a better structure.
+
+Do not add unnecessary features.
+
+## PHASE 3 — UI FOUNDATION
+
+Implement:
+
+- Application routing.
+- Shared layout.
+- Sidebar.
+- Top navigation.
+- Typography.
+- Color system.
+- Reusable components.
+- Responsive layout.
+
+Make sure the foundation is consistent before implementing all the individual pages.
+
+## PHASE 4 — 3D MODEL DEVELOPMENT
+
+Implement the reference-based anatomical 3D model.
+
+Prioritize:
+
+- Correct anatomical structure.
+- Visual similarity to the reference.
+- Smooth rendering.
+- Interactive exploration.
+- Layer switching.
+- Anatomical selection.
+- Performance.
+
+Keep the implementation modular.
+
+## PHASE 5 — DATA INTEGRATION
+
+Integrate the actual NASA-provided datasets.
+
+Implement:
+
+- Data loading.
+- Data validation.
+- Data processing.
+- Monitoring views.
+- Dataset exploration.
+- Relevant analytical visualizations.
+
+Connect the data to the 3D visualization only where scientifically supported.
+
+## PHASE 6 — COMPLETE WEBSITE
+
+Implement and connect all approved pages.
+
+Make sure each page has a distinct purpose.
+
+Ensure the application feels like one coherent platform.
+
+## PHASE 7 — TESTING & QUALITY ASSURANCE
+
+Test:
+
+- All routes.
+- Navigation.
+- 3D rendering.
+- Anatomical interactions.
+- Dataset loading.
+- Data accuracy.
+- Charts.
+- Search and filtering.
+- Responsive layouts.
+- Error handling.
+- Browser console.
+- Overall performance.
+
+Fix major bugs before considering the application complete.
+
+---
+
+# PART 11 — FINAL EXPECTATIONS
+
+We want the final application to look and feel like a professional scientific software product.
+
+It should be impressive enough for a NASA Space Apps Challenge presentation while remaining scientifically accurate and easy to understand.
+
+Our priorities are:
+
+1. Correct interpretation of the official challenge.
+2. Accurate use of NASA-provided datasets and conditions.
+3. Faithful 3D anatomical visualization based on the attached video.
+4. Professional multi-page architecture.
+5. Clean and sophisticated UI/UX.
+6. Functional interactions.
+7. Maintainable and scalable code.
+8. Reliable live presentation performance.
+
+Do not sacrifice accuracy for visual effects.
+
+Do not add features simply to make the application appear more complex.
+
+Do not turn the project into a generic medical dashboard.
+
+Do not use fake scientific measurements.
+
+Do not use unnecessary gradients or excessive animations.
+
+Do not create a single page containing all features.
+
+The result should be a cohesive, polished, scientifically grounded, interactive web platform.
+
+---
+
+# PART 12 — IMPORTANT EXECUTION INSTRUCTIONS
+
+You have permission to inspect and navigate publicly accessible official challenge resources, download relevant files, analyze them, and build the application within the Replit project environment.
+
+Use the available tools and capabilities responsibly.
+
+If a resource is inaccessible due to authentication or permissions, explain exactly what is needed and wait for me to provide access through a supported secure method.
+
+Never ask me to share my account password or authentication secrets.
+
+**Do not stop after producing a research report or an architecture proposal.** Complete the implementation as well, provided the necessary resources are accessible.
+
+Work phase by phase and document the results of each phase.
+
+If a critical missing resource prevents accurate implementation, ask me specifically for that resource rather than inventing its contents.
+
+If a non-critical detail is missing, choose a reasonable technical implementation, document the decision, and continue without fabricating scientific information.
+
+At the end, provide:
+
+1. A summary of the resources collected.
+2. A summary of the final architecture.
+3. A list of completed pages.
+4. Details of the implemented 3D model.
+5. An explanation of how the NASA data is integrated.
+6. A list of working features.
+7. Any remaining limitations.
+8. Instructions for running the website.
+
+**Final instruction: Build a real, working, professional multi-page web application — not just a visual prototype or a static mockup.**
