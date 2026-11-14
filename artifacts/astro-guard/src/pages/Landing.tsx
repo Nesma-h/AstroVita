@@ -22,10 +22,6 @@ export default function Landing() {
             <span>Start</span><ArrowRight size={18} />
           </Link>
         </div>
-        <p className="landing-fine" data-testid="text-landing-disclaimer">
-          Local demo with synthetic values · not NASA readings · not medical advice
-          {' · Astronaut: original 3D illustration'}
-        </p>
       </div>
     </main>
   );
