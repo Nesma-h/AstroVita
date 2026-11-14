@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { Pause, Play, RotateCcw } from 'lucide-react';
 import { buildAstronaut, createMaterials, disposeObject } from './astronautModel';
-import { MOTION_MODES, MotionDriver, type MotionMode } from './astronautMotion';
+import { MOTION_MODES, MotionDriver, nextMotionMode, type MotionMode } from './astronautMotion';
 
 let webglProbe: boolean | null = null;
 function hasWebGL(): boolean {
@@ -19,7 +19,7 @@ function hasWebGL(): boolean {
 
 type Status = 'ready' | 'unsupported' | 'lost' | 'error';
 
-export default function AstronautStage({ onShowEarth }: { onShowEarth: () => void }) {
+export default function AstronautStage() {
   const hostRef = useRef<HTMLDivElement>(null);
   const driverRef = useRef<MotionDriver | null>(null);
   const reduced = useRef(typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches).current;
@@ -140,8 +140,7 @@ export default function AstronautStage({ onShowEarth }: { onShowEarth: () => voi
   }, [status, attempt]);
 
   const cycle = () => {
-    const i = MOTION_MODES.findIndex((m) => m.id === mode);
-    setMode(MOTION_MODES[(i + 1) % MOTION_MODES.length].id);
+    setMode(nextMotionMode);
     if (paused) setPaused(false);
   };
   const current = MOTION_MODES.find((m) => m.id === mode)!;
@@ -159,7 +158,6 @@ export default function AstronautStage({ onShowEarth }: { onShowEarth: () => voi
               <RotateCcw size={13} /> Retry
             </button>
           )}
-          <button type="button" className="mascot-chip" onClick={onShowEarth} data-testid="button-mascot-show-earth">Show Earth instead</button>
         </div>
       </div>
     );
@@ -170,20 +168,10 @@ export default function AstronautStage({ onShowEarth }: { onShowEarth: () => voi
       <div ref={hostRef} className="mascot-canvas" />
       <button type="button" className="mascot-hit" onClick={cycle}
         aria-label={`Astronaut, currently: ${current.label}. Activate to switch to the next move.`} data-testid="button-mascot-cycle" />
-      <div className="mascot-controls" role="group" aria-label="Astronaut moves">
-        <div className="mascot-modes">
-          {MOTION_MODES.map((m) => (
-            <button key={m.id} type="button" className="mascot-chip" aria-pressed={mode === m.id} title={m.hint}
-              onClick={() => { setMode(m.id); if (paused) setPaused(false); }} data-testid={`button-mascot-${m.id}`}>
-              {m.label}
-            </button>
-          ))}
-        </div>
         <button type="button" className="mascot-chip mascot-pause" onClick={() => setPaused((p) => !p)}
           aria-label={paused ? 'Resume astronaut motion' : 'Pause astronaut motion'} data-testid="button-mascot-pause">
           {paused ? <Play size={13} /> : <Pause size={13} />}<span>{paused ? (reduced ? 'Play motion' : 'Resume') : 'Pause'}</span>
         </button>
-      </div>
       <p className="sr-only" aria-live="polite">{paused ? 'Paused.' : `Now: ${current.label}.`}</p>
     </div>
   );

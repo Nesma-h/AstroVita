@@ -1,24 +1,12 @@
-import { useState } from 'react';
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
-import EarthHero from '@/components/mascot/EarthHero';
 import AstronautStage from '@/components/mascot/AstronautStage';
 
-type Hero = 'astronaut' | 'earth';
-
 export default function Landing() {
-  const [hero, setHero] = useState<Hero>('astronaut');
   return (
-    <main className={`landing hero-${hero}`} data-testid="page-landing">
+    <main className="landing hero-astronaut" data-testid="page-landing">
       <div className="stars" aria-hidden="true" />
-      {hero === 'earth' ? <EarthHero /> : <AstronautStage onShowEarth={() => setHero('earth')} />}
-      <div className="hero-switch" role="group" aria-label="Hero visual">
-        {(['astronaut', 'earth'] as const).map((h) => (
-          <button key={h} type="button" aria-pressed={hero === h} onClick={() => setHero(h)} data-testid={`button-hero-${h}`}>
-            {h === 'astronaut' ? 'Astronaut' : 'Earth'}
-          </button>
-        ))}
-      </div>
+      <AstronautStage />
       <div className="landing-copy">
         <div className="landing-mark">
           <img src={`${import.meta.env.BASE_URL}astro-vita-icon.png`} className="brand-icon" alt="" aria-hidden="true" width={30} height={30} data-testid="img-brand-icon" /> AstroVita
@@ -36,7 +24,7 @@ export default function Landing() {
         </div>
         <p className="landing-fine" data-testid="text-landing-disclaimer">
           Local demo with synthetic values · not NASA readings · not medical advice
-          {hero === 'earth' ? ' · Earth: NASA Apollo 17' : ' · Astronaut: original 3D illustration'}
+          {' · Astronaut: original 3D illustration'}
         </p>
       </div>
     </main>

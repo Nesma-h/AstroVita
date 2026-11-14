@@ -8,6 +8,11 @@ export const MOTION_MODES: { id: MotionMode; label: string; hint: string }[] = [
   { id: 'pushups', label: 'Push-ups', hint: 'Plank, lower, press — countermeasure training' },
 ];
 
+export function nextMotionMode(current: MotionMode): MotionMode {
+  const index = MOTION_MODES.findIndex(m => m.id === current);
+  return MOTION_MODES[(index + 1) % MOTION_MODES.length].id;
+}
+
 const KEYS = ['y', 'z', 'rx', 'ry', 'rz', 'torsoX', 'torsoZ', 'headX', 'headY', 'headZ',
   'lShX', 'lShZ', 'lElX', 'rShX', 'rShZ', 'rElX', 'lHipX', 'lHipZ', 'lKnX', 'rHipX', 'rHipZ', 'rKnX'] as const;
 type Key = (typeof KEYS)[number];

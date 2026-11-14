@@ -39,7 +39,7 @@ Astro-Guard is a NASA Space Apps Challenge research and anatomy visualization we
 
 ## Product
 
-The app has two main screens: a short space-themed landing page and an interactive anatomy dashboard. The user is trying an animated cartoon astronaut instead of Earth on the landing page; keep the original Earth presentation available for easy comparison and restoration. Preserve the simple Start-to-dashboard flow; source and demo-status details should remain secondary to the 3D exploration.
+The app has two main screens: a short space-themed landing page and an interactive anatomy dashboard. The user approved the animated cartoon astronaut instead of Earth. Do not show an Earth switch or a movement-options bar: each click/tap on the astronaut advances one move, and that move repeats until the next click. Preserve the simple Start-to-dashboard flow; source and demo-status details should remain secondary to the 3D exploration.
 
 ## User preferences
 

@@ -1,11 +1,30 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { MotionDriver, MOTION_MODES } from '../src/components/mascot/astronautMotion.ts';
+import { MotionDriver, MOTION_MODES, nextMotionMode } from '../src/components/mascot/astronautMotion.ts';
 
 const advance = (driver, seconds) => {
   for (let i = 0; i < Math.round(seconds * 60); i++) driver.step(1 / 60);
   return { ...driver.current };
 };
+
+test('each click advances exactly one move and wraps to the first', () => {
+  let mode = 'wave';
+  const observed = [];
+  for (let clicks = 0; clicks < 8; clicks++) {
+    mode = nextMotionMode(mode);
+    observed.push(mode);
+  }
+  assert.deepEqual(observed, ['dance', 'flip', 'pushups', 'wave', 'dance', 'flip', 'pushups', 'wave']);
+});
+
+test('a move keeps repeating until another click changes it', () => {
+  for (const { id } of MOTION_MODES) {
+    const driver = new MotionDriver();
+    driver.setMode(id);
+    advance(driver, 30);
+    assert.equal(driver.mode, id);
+  }
+});
 
 test('every advertised movement produces finite poses and moving limbs', () => {
   assert.deepEqual(MOTION_MODES.map(m => m.id), ['wave', 'dance', 'flip', 'pushups']);
