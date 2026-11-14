@@ -817,7 +817,6 @@ body { background: var(--ink); color: var(--text); font-family: var(--app-font-s
 .mascot-chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid transparent; background: transparent; color: #b9c8da; border-radius: 999px; padding: 8px 13px; font: 500 10px var(--app-font-mono); letter-spacing: .08em; text-transform: uppercase; transition: background .18s, color .18s; }
 .mascot-chip:hover { color: var(--text); background: rgba(159,230,210,.08); }
 .mascot-chip:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
-.mascot-pause { position: absolute; right: 24px; bottom: 24px; border-color: var(--line); background: rgba(10,17,32,.62); }
 .mascot-fallback { display: grid; place-content: center; gap: 14px; text-align: center; color: #b9c8da; font: 11px var(--app-font-mono); padding: 30px; }
 .mascot-fallback-actions { display: flex; gap: 8px; justify-content: center; }
 .mascot-fallback .mascot-chip { border-color: var(--line); }

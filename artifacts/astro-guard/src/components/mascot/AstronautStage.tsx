@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { Pause, Play, RotateCcw } from 'lucide-react';
+import { RotateCcw } from 'lucide-react';
 import { buildAstronaut, createMaterials, disposeObject } from './astronautModel';
-import { MOTION_MODES, MotionDriver, nextMotionMode, type MotionMode } from './astronautMotion';
+import { DEFAULT_MOTION, MOTION_MODES, MotionDriver, nextMotionMode, type MotionMode } from './astronautMotion';
 
 let webglProbe: boolean | null = null;
 function hasWebGL(): boolean {
@@ -23,12 +23,9 @@ export default function AstronautStage() {
   const hostRef = useRef<HTMLDivElement>(null);
   const driverRef = useRef<MotionDriver | null>(null);
   const reduced = useRef(typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches).current;
-  const [mode, setMode] = useState<MotionMode>('wave');
-  const [paused, setPaused] = useState<boolean>(!!reduced);
+  const [mode, setMode] = useState<MotionMode>(DEFAULT_MOTION);
   const [status, setStatus] = useState<Status>(() => (hasWebGL() ? 'ready' : 'unsupported'));
   const [attempt, setAttempt] = useState(0);
-  const pausedRef = useRef(paused);
-  pausedRef.current = paused;
 
   useEffect(() => { driverRef.current?.setMode(mode); }, [mode]);
 
@@ -103,7 +100,9 @@ export default function AstronautStage() {
       raf = 0;
       const dt = Math.min(0.05, Math.max(0, (now - last) / 1000));
       last = now;
-      if (!pausedRef.current) { clock += dt; driver.step(dt); }
+      const motionDelta = reduced ? dt * 0.35 : dt;
+      clock += motionDelta;
+      driver.step(motionDelta);
       driver.apply(rig, clock);
       holder.rotation.y = -0.35;
       renderer.render(scene, camera);
@@ -141,7 +140,6 @@ export default function AstronautStage() {
 
   const cycle = () => {
     setMode(nextMotionMode);
-    if (paused) setPaused(false);
   };
   const current = MOTION_MODES.find((m) => m.id === mode)!;
 
@@ -168,11 +166,7 @@ export default function AstronautStage() {
       <div ref={hostRef} className="mascot-canvas" />
       <button type="button" className="mascot-hit" onClick={cycle}
         aria-label={`Astronaut, currently: ${current.label}. Activate to switch to the next move.`} data-testid="button-mascot-cycle" />
-        <button type="button" className="mascot-chip mascot-pause" onClick={() => setPaused((p) => !p)}
-          aria-label={paused ? 'Resume astronaut motion' : 'Pause astronaut motion'} data-testid="button-mascot-pause">
-          {paused ? <Play size={13} /> : <Pause size={13} />}<span>{paused ? (reduced ? 'Play motion' : 'Resume') : 'Pause'}</span>
-        </button>
-      <p className="sr-only" aria-live="polite">{paused ? 'Paused.' : `Now: ${current.label}.`}</p>
+      <p className="sr-only" aria-live="polite">{`Now: ${current.label}.`}</p>
     </div>
   );
 }

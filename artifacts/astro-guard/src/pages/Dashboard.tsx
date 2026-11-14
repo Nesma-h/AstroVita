@@ -6,7 +6,6 @@ import {
   ArrowUpRight,
   BookOpen,
   Maximize2,
-  Pause,
   Play,
   RotateCcw,
   X,
@@ -176,7 +175,6 @@ export default function Dashboard() {
   const [attempt, setAttempt] = useState(0);
   const [selected, setSelected] = useState<SystemId | null>(null);
   const [scenario, setScenario] = useState<ScenarioId>("nominal");
-  const [paused, setPaused] = useState(false);
   const [tick, setTick] = useState(0);
   const [sourcesOpen, setSourcesOpen] = useState(false);
   const [checkInOpen, setCheckInOpen] = useState(false);
@@ -236,13 +234,10 @@ export default function Dashboard() {
     status.kind,
   ]);
   useEffect(() => {
-    engineRef.current?.setPaused(paused);
-  }, [paused, status.kind]);
-  useEffect(() => {
-    if (paused || checkInMode) return;
+    if (checkInMode) return;
     const id = window.setInterval(() => setTick((t) => t + 1), 2000);
     return () => window.clearInterval(id);
-  }, [paused, checkInMode]);
+  }, [checkInMode]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -366,16 +361,6 @@ export default function Dashboard() {
                   </button>
                 ))}
               </div>
-              <button
-                className="icon-btn"
-                onClick={() => setPaused((p) => !p)}
-                aria-pressed={paused}
-                aria-label={paused ? "Resume demo" : "Pause demo"}
-                data-testid="button-toggle-pause"
-              >
-                {paused ? <Play size={15} /> : <Pause size={15} />}
-                <span>{paused ? "Resume" : "Pause"}</span>
-              </button>
             </>
           ) : (
             <button
@@ -825,7 +810,6 @@ export default function Dashboard() {
           setCheckIn(record);
           setCheckInMode(true);
           setCheckInOpen(false);
-          setPaused(false);
         }}
       />
     </div>

@@ -1,11 +1,22 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { MotionDriver, MOTION_MODES, nextMotionMode } from '../src/components/mascot/astronautMotion.ts';
+import { DEFAULT_MOTION, MotionDriver, MOTION_MODES, nextMotionMode } from '../src/components/mascot/astronautMotion.ts';
 
 const advance = (driver, seconds) => {
   for (let i = 0; i < Math.round(seconds * 60); i++) driver.step(1 / 60);
   return { ...driver.current };
 };
+
+test('the landing starts dancing and its pose changes without a click', () => {
+  assert.equal(DEFAULT_MOTION, 'dance');
+  const driver = new MotionDriver();
+  driver.setMode(DEFAULT_MOTION);
+  const first = advance(driver, 1);
+  const later = advance(driver, 0.3);
+  assert.notDeepEqual(first, later);
+  assert.equal(driver.mode, 'dance');
+  assert.equal(nextMotionMode(DEFAULT_MOTION), 'flip');
+});
 
 test('each click advances exactly one move and wraps to the first', () => {
   let mode = 'wave';

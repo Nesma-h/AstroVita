@@ -1,6 +1,7 @@
 import type { AstronautRig } from './astronautModel';
 
 export type MotionMode = 'wave' | 'dance' | 'flip' | 'pushups';
+export const DEFAULT_MOTION: MotionMode = 'dance';
 export const MOTION_MODES: { id: MotionMode; label: string; hint: string }[] = [
   { id: 'wave', label: 'Float & wave', hint: 'Drifts in zero-g and waves hello' },
   { id: 'dance', label: 'Dance', hint: 'Hip sway, knee bounce, arm pumps' },
