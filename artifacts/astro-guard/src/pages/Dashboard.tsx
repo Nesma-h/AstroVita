@@ -330,7 +330,7 @@ export default function Dashboard() {
     <div className="dash" data-testid="page-dashboard">
       <header className="dash-top">
         <Link href="/" className="dash-brand" data-testid="link-home">
-          <span className="brand-orb" aria-hidden="true" />
+          <img src={`${import.meta.env.BASE_URL}astro-vita-icon.png`} className="brand-icon" alt="" aria-hidden="true" width={30} height={30} data-testid="img-brand-icon" />
           <span>AstroVita</span>
         </Link>
         {/* <div className={`demo-pill${checkInMode ? ' checkin-pill' : ''}`} role="note" data-testid="text-demo-disclaimer">

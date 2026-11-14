@@ -13,7 +13,7 @@ export default function Landing() {
         transition={{ duration: 2.2, ease: [0.16, 0.8, 0.2, 1] }} />
       <div className="landing-copy">
         <div className="landing-mark">
-          <span className="brand-orb" aria-hidden="true" /> AstroVita
+          <img src={`${import.meta.env.BASE_URL}astro-vita-icon.png`} className="brand-icon" alt="" aria-hidden="true" width={30} height={30} data-testid="img-brand-icon" /> AstroVita
         </div>
         <h1 data-testid="text-landing-title">
           Earth is behind you.<br /><em>Your body comes along.</em>

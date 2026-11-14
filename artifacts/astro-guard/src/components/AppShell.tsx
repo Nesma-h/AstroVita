@@ -27,7 +27,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="app-shell">
       <aside className="side-rail">
         <div className="brand-lockup">
-          <div className="brand-mark" aria-hidden="true"><Orbit size={19} strokeWidth={1.5} /></div>
+          <img src={`${import.meta.env.BASE_URL}astro-vita-icon.png`} className="brand-icon" alt="" aria-hidden="true" width={30} height={30} data-testid="img-brand-icon" />
           <div>
             <div className="brand-name">ASTROVITA</div>
             <div className="brand-sub">RESEARCH INTERFACE / 01</div>
