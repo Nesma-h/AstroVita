@@ -22,7 +22,6 @@ type Status = 'ready' | 'unsupported' | 'lost' | 'error';
 export default function AstronautStage() {
   const hostRef = useRef<HTMLDivElement>(null);
   const driverRef = useRef<MotionDriver | null>(null);
-  const reduced = useRef(typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches).current;
   const [mode, setMode] = useState<MotionMode>(DEFAULT_MOTION);
   const [status, setStatus] = useState<Status>(() => (hasWebGL() ? 'ready' : 'unsupported'));
   const [attempt, setAttempt] = useState(0);
@@ -100,9 +99,8 @@ export default function AstronautStage() {
       raf = 0;
       const dt = Math.min(0.05, Math.max(0, (now - last) / 1000));
       last = now;
-      const motionDelta = reduced ? dt * 0.35 : dt;
-      clock += motionDelta;
-      driver.step(motionDelta);
+      clock += dt;
+      driver.step(dt);
       driver.apply(rig, clock);
       holder.rotation.y = -0.35;
       renderer.render(scene, camera);
