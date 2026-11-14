@@ -1,5 +1,5 @@
 export type SystemId = 'heart' | 'lungs' | 'brain' | 'skeletal' | 'immune';
-export type ScenarioId = 'nominal' | 'workload' | 'recovery';
+export type ScenarioId = 'nominal' | 'workload' | 'recovery' | 'alert-drill';
 
 export interface SystemInfo {
   id: SystemId;
@@ -67,7 +67,7 @@ export const SYSTEMS: Record<SystemId, SystemInfo> = {
   },
 };
 
-export type Flag = 'steady' | 'watch';
+export type Flag = 'steady' | 'watch' | 'alert';
 
 export interface Scenario {
   id: ScenarioId;
@@ -97,8 +97,15 @@ export const SCENARIOS: Record<ScenarioId, Scenario> = {
     bpm: 71, breaths: 15, sleepHours: 8.1, exerciseMin: 86, immuneSample: 'Sample logged, awaiting lab',
     flags: { brain: 'steady' },
   },
+  'alert-drill': {
+    id: 'alert-drill', label: 'Alert drill',
+    blurb: 'A fictional all-system alert drill. Events are scripted, not triggered by clinical thresholds.',
+    bpm: 118, breaths: 24, sleepHours: 4.2, exerciseMin: 20,
+    immuneSample: 'Fictional sample review requested',
+    flags: { heart: 'alert', lungs: 'alert', brain: 'alert', skeletal: 'alert', immune: 'alert' },
+  },
 };
-export const SCENARIO_ORDER: ScenarioId[] = ['nominal', 'workload', 'recovery'];
+export const SCENARIO_ORDER: ScenarioId[] = ['nominal', 'workload', 'recovery', 'alert-drill'];
 
 export interface Readings { bpm: number; breaths: number; sleepHours: number; exerciseMin: number; immuneSample: string; }
 

@@ -381,12 +381,14 @@ export function createAnatomyEngine(stage: HTMLElement, cb: EngineCallbacks): An
       const el = markers[id];
       const a = anchors[id];
       if (!el) return;
-      if (!a) { el.style.opacity = '0'; return; }
+      if (!a) { el.style.opacity = '0'; el.tabIndex = -1; return; }
       proj.copy(a).project(camera);
       const vis = proj.z < 1 && Math.abs(proj.x) < 1.1 && Math.abs(proj.y) < 1.1;
       el.style.transform = `translate3d(${((proj.x + 1) / 2) * w}px, ${((1 - proj.y) / 2) * h}px, 0)`;
       el.style.opacity = vis ? '1' : '0';
       el.style.pointerEvents = vis ? 'auto' : 'none';
+      el.tabIndex = vis ? 0 : -1;
+      el.setAttribute('aria-hidden', vis ? 'false' : 'true');
     });
     } catch (error) {
       console.error('Anatomy rendering stopped safely', error);

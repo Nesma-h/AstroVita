@@ -12,6 +12,7 @@ import {
   X,
   ZoomIn,
   ZoomOut,
+  TriangleAlert,
 } from "lucide-react";
 import {
   createAnatomyEngine,
@@ -20,6 +21,8 @@ import {
   type EngineStatus,
 } from "@/components/anatomy/engine";
 import { HealthCheckInDrawer } from "@/components/HealthCheckInDrawer";
+import { DemoAlertBanner, DemoAlertNotice } from "@/components/DemoAlerts";
+import { getDemoAlerts } from "@/data/demoAlerts";
 import { HEALTH_GUIDANCE } from "@/data/healthGuidance";
 import {
   DEMO_DISCLAIMER,
@@ -183,6 +186,7 @@ export default function Dashboard() {
 
   const sc = SCENARIOS[scenario];
   const readings = demoReadings(sc, tick);
+  const demoAlerts = getDemoAlerts(sc, checkInMode);
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -317,6 +321,7 @@ export default function Dashboard() {
   }, [checkInOpen]);
 
   const info = selected ? SYSTEMS[selected] : null;
+  const selectedDemoAlert = demoAlerts.find(a => a.systemId === selected);
   const activeCheckIn = checkInMode ? checkIn : null;
   const checkInTime = activeCheckIn
     ? new Date(activeCheckIn.recordedAt).toLocaleString()
@@ -403,6 +408,13 @@ export default function Dashboard() {
         </div>
       </header>
 
+      <DemoAlertBanner scenario={sc} alerts={demoAlerts} checkInMode={checkInMode}
+        onInspectNext={() => {
+          const current = demoAlerts.findIndex(a => a.systemId === selected);
+          const next = demoAlerts[(current + 1) % demoAlerts.length];
+          if (next) setSelected(next.systemId);
+        }} />
+
       <div className="dash-grid">
         <section className="stage-wrap" aria-label="3D anatomy view">
           <div className="stage" ref={stageRef} data-testid="stage-anatomy">
@@ -414,16 +426,22 @@ export default function Dashboard() {
                     markerEls.current[id] = el;
                     engineRef.current?.bindMarker(id, el);
                   }}
-                  className={`marker${selected === id ? " on" : ""}${!checkInMode && sc.flags[id] === "watch" ? " watch" : ""}${id === "immune" ? " systemic" : ""}`}
+                  className={`marker${selected === id ? " on" : ""}${demoAlerts.find(a => a.systemId === id) ? ` ${sc.flags[id]}` : ""}${id === "immune" ? " systemic" : ""}`}
                   style={{ opacity: 0 }}
                   onClick={() => setSelected(id)}
-                  aria-label={`Inspect ${SYSTEMS[id].label}`}
-                  tabIndex={-1}
+                  aria-label={`Inspect ${SYSTEMS[id].label}${demoAlerts.find(a => a.systemId === id) ? ` — demo ${sc.flags[id]}, simulation only` : checkInMode ? " — not medically assessed" : ""}`}
+                  tabIndex={status.kind === "ready" ? 0 : -1}
                   data-testid={`marker-${id}`}
                 >
                   <span className="marker-ring" />
                   <span className="marker-label">
                     {id === "immune" ? "Immune · body-wide" : SYSTEMS[id].label}
+                    {demoAlerts.find(a => a.systemId === id) && (
+                      <span className="marker-demo-label" data-testid={`badge-demo-alert-${id}`}>
+                        <TriangleAlert size={12} aria-hidden="true" />
+                        DEMO {sc.flags[id] === "alert" ? "ALERT" : "WATCH"}
+                      </span>
+                    )}
                   </span>
                 </button>
               ))}
@@ -538,6 +556,9 @@ export default function Dashboard() {
                     <X size={15} />
                   </button>
                 </div>
+                {selectedDemoAlert && (
+                  <DemoAlertNotice alert={selectedDemoAlert} />
+                )}
                 {(() => {
                   const r = readingFor(info.id, readings, activeCheckIn);
                   const flag = checkInMode ? undefined : sc.flags[info.id];
@@ -568,14 +589,16 @@ export default function Dashboard() {
                         </div>
                       ))}
                       <div
-                        className={`flag-row ${flag ?? "none"}`}
+                        className={`flag-row ${checkInMode ? "checkin-unassessed" : flag ?? "none"}`}
                         data-testid={`status-flag-${info.id}`}
                       >
                         {checkInMode
                           ? r.isText
                             ? "No matching measurement entered"
                             : "User-entered · not medically assessed"
-                          : flag === "watch"
+                          : flag === "alert"
+                            ? "Demo alert · scenario script only"
+                            : flag === "watch"
                             ? "Scripted demo flag: shown for this scenario only"
                             : "No scripted demo flag in this scenario"}
                       </div>
