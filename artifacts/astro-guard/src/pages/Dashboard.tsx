@@ -21,7 +21,7 @@ import {
   type EngineStatus,
 } from "@/components/anatomy/engine";
 import { HealthCheckInDrawer } from "@/components/HealthCheckInDrawer";
-import { DemoAlertBanner, DemoAlertNotice } from "@/components/DemoAlerts";
+import { DemoAlertNotice } from "@/components/DemoAlerts";
 import { getDemoAlerts } from "@/data/demoAlerts";
 import { HEALTH_GUIDANCE } from "@/data/healthGuidance";
 import {
@@ -407,13 +407,6 @@ export default function Dashboard() {
           </button>
         </div>
       </header>
-
-      <DemoAlertBanner scenario={sc} alerts={demoAlerts} checkInMode={checkInMode}
-        onInspectNext={() => {
-          const current = demoAlerts.findIndex(a => a.systemId === selected);
-          const next = demoAlerts[(current + 1) % demoAlerts.length];
-          if (next) setSelected(next.systemId);
-        }} />
 
       <div className="dash-grid">
         <section className="stage-wrap" aria-label="3D anatomy view">
