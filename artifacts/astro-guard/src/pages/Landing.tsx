@@ -1,16 +1,24 @@
+import { useState } from 'react';
 import { Link } from 'wouter';
-import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import earth from '@assets/image_search/earth-apollo17.jpg';
+import EarthHero from '@/components/mascot/EarthHero';
+import AstronautStage from '@/components/mascot/AstronautStage';
+
+type Hero = 'astronaut' | 'earth';
 
 export default function Landing() {
+  const [hero, setHero] = useState<Hero>('astronaut');
   return (
-    <main className="landing" data-testid="page-landing">
+    <main className={`landing hero-${hero}`} data-testid="page-landing">
       <div className="stars" aria-hidden="true" />
-      <motion.img src={earth} alt="Earth photographed from Apollo 17, NASA image AS17-148-22727"
-        className="earth" data-testid="img-earth"
-        initial={{ opacity: 0, scale: 1.12, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 2.2, ease: [0.16, 0.8, 0.2, 1] }} />
+      {hero === 'earth' ? <EarthHero /> : <AstronautStage onShowEarth={() => setHero('earth')} />}
+      <div className="hero-switch" role="group" aria-label="Hero visual">
+        {(['astronaut', 'earth'] as const).map((h) => (
+          <button key={h} type="button" aria-pressed={hero === h} onClick={() => setHero(h)} data-testid={`button-hero-${h}`}>
+            {h === 'astronaut' ? 'Astronaut' : 'Earth'}
+          </button>
+        ))}
+      </div>
       <div className="landing-copy">
         <div className="landing-mark">
           <img src={`${import.meta.env.BASE_URL}astro-vita-icon.png`} className="brand-icon" alt="" aria-hidden="true" width={30} height={30} data-testid="img-brand-icon" /> AstroVita
@@ -27,7 +35,8 @@ export default function Landing() {
           </Link>
         </div>
         <p className="landing-fine" data-testid="text-landing-disclaimer">
-          Local demo with synthetic values · not NASA readings · not medical advice · Earth: NASA Apollo 17
+          Local demo with synthetic values · not NASA readings · not medical advice
+          {hero === 'earth' ? ' · Earth: NASA Apollo 17' : ' · Astronaut: original 3D illustration'}
         </p>
       </div>
     </main>
