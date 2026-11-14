@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "nyAHQ4ZX3O6NHcLrJ4_iR"
+uri = "file://artifacts/astro-guard/resources/medical-threshold-review.html"
+type = "html"
+title = "AstroVita — توثيق حدود التنبيه الصحي"
+description = "مراجعة عربية لمصادر NASA: حدود كثافة العظام الموثقة، ومراجع النوم والتمرين، والبيانات والاعتمادات الناقصة قبل تشغيل أي إنذار طبي. لم يتغير الموقع."
+logical_id = "da96778a-2d4b-4d2b-9b3c-a0bf5a7cb7b0"
+content_hash = "sha256:26c47de5f949cf24232118428d6fcedf34ddf7220dd4de02a4d18cc22929aaf0"
+size = 20136
+mtime_ms = 1794615644898
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:2f6c89d0-e082-47ff-9880-d6b5684b6bc5/da96778a-2d4b-4d2b-9b3c-a0bf5a7cb7b0/a51463a0-c6ee-489c-bb01-ca6d85a36aa0"
+storage_version_token = "1794615669246575"
+content_type = "text/html"
