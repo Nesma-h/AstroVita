@@ -44,12 +44,13 @@ The 3D view uses separately sourced educational anatomy meshes: a BodyParts3D-de
 
 This project was built for the NASA Space Apps Challenge by a team:
 
-- Mohanad Mostafa
-- Malak Ahmed
-- Hemat Hamdy
-- Mohamed El-Sefty
-- Mohamed Emad El-Sefty
+
 - Nesma Hesham
+- Malak Ahmed
+- HemMat Hamdy
+- Mohamed El-Safty
+- Mohanad Mostafa
+
 
 ## Credits
 
